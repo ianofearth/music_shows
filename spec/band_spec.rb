@@ -5,9 +5,9 @@ describe(Band) do
 
 	describe("validation") do
 
-		# it("validates the presence of a band name") do
-		# 	band = Band.new({:name => ""})
-		# 	expect(band.save()).to(eq(false))
-		# end
+		it("validates the presence of a band name") do
+			band = Band.new({:name => ""})
+			expect(band.save()).to(eq(false))
+		end
 	end
 end

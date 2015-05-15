@@ -32,3 +32,12 @@ describe("adding a new band", {:type => :feature}) do
 		expect(page).to have_content("Ian and the Stooges")
 	end
 end
+
+describe("viewing an individual band", :type => :feature) do
+	it("allows users to view an individual venue") do
+		band = Band.create({:name => "Ian and the Stooges"})
+		visit("/bands")
+		click_link("Ian and the Stooges")
+		expect(page).to have_content("Ian and the Stooges")
+	end
+end

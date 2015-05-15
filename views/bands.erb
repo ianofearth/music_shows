@@ -33,5 +33,16 @@
 	<button type="submit">Update Band</button>
 </form>
 
+<form action="/bands/delete" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<label for="band_delete_select">Select a band to delete:  </label>
+	<select id="band_delete_select" name="band_delete_select">
+		<% @bands.each() do |band| %>
+			<option value="<%= band.id %>"><%= band.name() %></option>
+		<% end %>
+	</select>
+	<button type="submit">Delete Band</button>
+</form>
+
 
 <a href="/">Home</a>

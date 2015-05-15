@@ -46,9 +46,22 @@ describe("updating a band name", :type => :feature) do
 	it("allows a user to update a bands name") do
 		band = Band.create({:name => "Ian and the Stooges"})
 		visit("/bands")
-		select(band.name, :from => "band_select")
+		select(band.name(), :from => "band_select")
 		fill_in("name_update", :with => "The Stooges, Featuring Ian")
 		click_button("Update Band")
 		expect(page).to have_content("The Stooges, Featuring Ian")
 	end
 end
+
+describe("deleting a band name", :type => :feature) do
+	it("allows a user to delete a band") do
+		band = Band.create({:name => "Ian and the Stooges"})
+		band2 = Band.create({:name => "Ian and Sebastian"})
+		visit("/bands")
+		select(band.name, :from => "band_delete_select")
+		click_button("Delete Band")
+		expect(page).to have_content(band2.name())
+	end
+end
+
+

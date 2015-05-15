@@ -17,6 +17,13 @@ describe(Venue) do
 			venue.save()
 			expect(venue.name()).to(eq("Worst of the Worst Venue"))
 		end
+
+		it("will always capitalize the first word regardless of wether or not it is a special word") do
+			venue = Venue.new(:name => "the worst of the worst venue")
+			venue.save()
+			expect(venue.name()).to(eq("The Worst of the Worst Venue"))
+		end
+
 	end
 	
 end

@@ -10,6 +10,7 @@ get("/venues") do
 	@venues = Venue.all()
 	erb(:venues)
 end
+
 get("/venues/:id") do
 	id = params.fetch("id").to_i()
 	@venue = Venue.find(id)
@@ -30,17 +31,33 @@ get("/bands") do
 	@bands = Band.all()
 	erb(:bands)
 end
+
 get("/bands/:id") do
 	id = params.fetch("id").to_i()
 	@band = Band.find(id)
+	@venues = Venue.all()
 	erb(:band)
+end
+
+# get("/bands/:id") do
+# 	@band = Band.find(params.fetch("id").to_i())
+# 	@venues = Venue.all()
+# 	redirect("/bands/:id")
+# end
+
+
+get("/venues/:id") do ### added this, hope it works
+	id = params.fetch("id").to_i()
+	@venue = Venue.find(id)
+	@bands = Band.all()
+	erb(:venue)
 end
 
 post("/bands/new") do
 	band_name = params.fetch("name")
 	@band = Band.new({:name => band_name})
 	if @band.save()
-		redirect("/bands")
+		redirect("/bands/")
 	else
 		erb(:errors)
 	end
@@ -61,5 +78,15 @@ patch("/bands/update") do
 		@band.update({:name => name})
 	end
 	redirect("/bands")
+end
+
+patch("/bands/:id/add_venue") do
+	@venues = Venue.all()#added, hope it works
+	id = params.fetch("id").to_i()
+	@band = Band.find(id)
+	venue_id = params.fetch("venue_select_band").to_i()
+	venue = Venue.find(venue_id)
+	@band.venues().push(venue)
+	redirect("/bands/" + id.to_s())
 end
 

@@ -34,7 +34,7 @@ describe("adding a new band", {:type => :feature}) do
 end
 
 describe("viewing an individual band", :type => :feature) do
-	it("allows users to view an individual venue") do
+	it("allows users to view an individual band") do
 		band = Band.create({:name => "Ian and the Stooges"})
 		visit("/bands")
 		click_link("Ian and the Stooges")
@@ -63,5 +63,18 @@ describe("deleting a band name", :type => :feature) do
 		expect(page).to have_content(band2.name())
 	end
 end
+
+describe("adding a venue to band", :type => :feature) do
+	it("allows a user to add a venue to a band") do
+		band = Band.create({:name => "Ian and the Stooges", :id => 1})
+		venue = Venue.create({:name => "Ian's Place"})
+		visit("/bands/1")
+		select(venue.name, :from => "venue_select")
+		click_button("Add a venue played")
+		expect(page).to have_content("Ian's Place")
+	end
+end
+
+
 
 

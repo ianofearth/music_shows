@@ -9,7 +9,7 @@ private
 	define_method(:title_case_venue) do
 		special_words = ["and", "at", "it", "with", "to", "the", "of", "from", "but", "on", "or", "by"]
 		capitalized_venue = []
-		self.name = (venue = self.name.split(" ")
+		self.name = (venue = self.name.capitalize!.split(" ")
 		venue.each do |word|
 			if special_words.include?(word)
 				capitalized_venue.push(word)

@@ -14,6 +14,9 @@ end
 post("/venues/new") do
 	venue_name = params.fetch("name")
 	@venue = Venue.new({:name => venue_name})
-	@venue.save()
-	redirect("/venues")
+	if @venue.save()
+		redirect("/venues")
+	else
+		erb(:errors)
+	end
 end

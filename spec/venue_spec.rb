@@ -10,5 +10,13 @@ describe(Venue) do
 			expect(venue.save()).to(eq(false))
 		end
 	end
+
+	describe("#title_case") do
+		it("will title case venue names, excliuding special words") do
+			venue = Venue.new(:name => "ian and the stooges")
+			venue.save()
+			expect(venue.name()).to(eq("Ian and the Stooges"))
+		end
+	end
 	
 end

@@ -46,6 +46,13 @@ post("/bands/new") do
 	end
 end
 
+delete("/bands/delete") do
+	band_id = params.fetch("band_delete_select").to_i()
+	band = Band.find(band_id)
+	band.delete()
+	redirect("/bands")
+end
+
 patch("/bands/update") do
 	band_id = params.fetch("band_select").to_i()
 	@band = Band.find(band_id)

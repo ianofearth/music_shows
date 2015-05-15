@@ -1,0 +1,9 @@
+<h2>There was an error with your entry!</h2>
+
+<ul>
+	<% @venue.errors().full_messages().each() do |message| %>
+		<li><%= message %></li>
+	<% end %>
+</ul>
+
+<a href="/venues">Back to Venues</a>

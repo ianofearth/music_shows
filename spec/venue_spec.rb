@@ -23,7 +23,6 @@ describe(Venue) do
 			venue.save()
 			expect(venue.name()).to(eq("The Worst Venue of all the Venues"))
 		end
-
 	end
 	
 end

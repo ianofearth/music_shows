@@ -10,6 +10,11 @@ get("/venues") do
 	@venues = Venue.all()
 	erb(:venues)
 end
+get("/venues/:id") do
+	id = params.fetch("id").to_i()
+	@venue = Venue.find(id)
+	erb(:venue)
+end
 
 post("/venues/new") do
 	venue_name = params.fetch("name")

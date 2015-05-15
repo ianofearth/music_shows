@@ -13,9 +13,9 @@ describe(Venue) do
 
 	describe("#title_case") do
 		it("will title case venue names, excliuding special words") do
-			venue = Venue.new(:name => "ian and the stooges")
+			venue = Venue.new(:name => "worst of the worst venue")
 			venue.save()
-			expect(venue.name()).to(eq("Ian and the Stooges"))
+			expect(venue.name()).to(eq("Worst of the Worst Venue"))
 		end
 	end
 	

@@ -41,3 +41,14 @@ describe("viewing an individual band", :type => :feature) do
 		expect(page).to have_content("Ian and the Stooges")
 	end
 end
+
+describe("updating a band name", :type => :feature) do
+	it("allows a user to update a bands name") do
+		band = Band.create({:name => "Ian and the Stooges"})
+		visit("/bands")
+		select("Ian and the stooges", :from => "band_select")
+		fill_in("name_update", :with => "The Stooges, Featuring Ian")
+		click_botton("Update Band")
+		expect(page).to have_content("The Stooges, Featuring Ian")
+	end
+end

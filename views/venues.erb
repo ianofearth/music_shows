@@ -1,0 +1,21 @@
+<h1>Welcome to the venues page!</h1>
+<h3>Navigate links below to view and add venues</h3>
+
+<% if @venues.any?() %>
+	<h3>Here are all of the Venues that have been added:</h3>
+
+	<ul>
+		<% @venues.each do |venue| %>
+			<li><a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
+		<% end %>
+	</ul>
+
+<% else %>
+	<h3>There are currently no venues, fill in the "Venue Name" field below and click "Add Venue" button to add a venue.</h3>
+<% end %>
+
+<form action="/venues/new" method="post">
+	<label for="name">Venue Name:  </label>
+	<input id="name" name="name" type="text">
+	<button type="submit">Add Venue</button>
+</form>

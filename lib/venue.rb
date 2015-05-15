@@ -7,7 +7,7 @@ class Venue <ActiveRecord::Base
 private
 
 	define_method(:title_case_venue) do
-		special_words = ["and", "at", "it", "with", "to", "the", "of", "from", "but", "on", "or", "by"]
+		special_words = ["and", "at", "it", "with", "to", "the", "of", "from", "but", "on", "or", "by", "all", "a", "has", "in"]
 		capitalized_venue = []
 		self.name = (venue = self.name.capitalize!.split(" ")
 		venue.each do |word|

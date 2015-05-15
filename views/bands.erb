@@ -20,6 +20,18 @@
 	<button type="submit">Add Band</button>
 </form>
 
+<form action="/bands/update" method="post">
+	<input type="hidden" name="_method" value="patch">
+	<label for="band_select">Select a band to update:  </label>
+	<select id="band_select" name="band_select">
+		<% @bands.each() do |band| %>
+			<option value="<%= band.id %>"><%= band.name() %></option>
+		<% end %>
+	</select>
+	<label for="name_update">Band name:  </label>
+	<input id="name_update" name="name_update" type="text" value="">
+	<button type="submit">Update Band</button>
+</form>
 
 
 <a href="/">Home</a>

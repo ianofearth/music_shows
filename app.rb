@@ -46,3 +46,13 @@ post("/bands/new") do
 	end
 end
 
+patch("/bands/update") do
+	band_id = params.fetch("band_select").to_i()
+	@band = Band.find(band_id)
+	if params.fetch("name_update") != ""
+		name = params.fetch("name_update")
+		@band.update({:name => name})
+	end
+	redirect("/bands")
+end
+

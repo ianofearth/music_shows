@@ -25,3 +25,24 @@ post("/venues/new") do
 		erb(:errors)
 	end
 end
+
+get("/bands") do
+	@bands = Band.all()
+	erb(:bands)
+end
+get("/bands/:id") do
+	id = params.fetch("id").to_i()
+	@band = Band.find(id)
+	erb(:band)
+end
+
+post("/bands/new") do
+	band_name = params.fetch("name")
+	@band = Band.new({:name => band_name})
+	if @band.save()
+		redirect("/bands")
+	else
+		erb(:errors)
+	end
+end
+

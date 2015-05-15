@@ -1,0 +1,23 @@
+<h1>Welcome to the bands page!</h1>
+<h3>Navigate links below to view and add bands</h3>
+
+<% if @bands.any?() %>
+	<h3>Here are all of the Bands that have been added:</h3>
+
+	<ul>
+		<% @bands.each do |band| %>
+			<li><a href="/bands/<%= band.id() %>"><%= band.name() %></a></li>
+		<% end %>
+	</ul>
+
+<% else %>
+	<h3>There are currently no bands, fill in the "Band Name" field below and click "Add Band" button to add a band.</h3>
+<% end %>
+
+<form action="/bands/new" method="post">
+	<label for="name">Band Name:  </label>
+	<input id="name" name="name" type="text">
+	<button type="submit">Add Band</button>
+</form>
+
+<a href="/">Home</a>

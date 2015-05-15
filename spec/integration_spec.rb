@@ -23,8 +23,12 @@ describe("viewing an individual venue", :type => :feature) do
 	end
 end
 
-# describe("adding a new band", {:type => :feature}) do
-# 	it("allows a user to add a new band to the list of bands") do
-# 		visit("/")
-# 		click_link("View All Bands")
-# 		fill_
+describe("adding a new band", {:type => :feature}) do
+	it("allows a user to add a new band to the list of bands") do
+		visit("/")
+		click_link("View All Bands")
+		fill_in("name", :with => "Ian and the Stooges")
+		click_button("Add Band")
+		expect(page).to have_content("Ian and the Stooges")
+	end
+end
